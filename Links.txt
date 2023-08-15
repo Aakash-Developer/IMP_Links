@@ -7,3 +7,6 @@ Resume Builder
 1: https://github.com/Yagnik-Gohil/Resume-Builder
 2: https://github.com/GaurangShukla/react-firebase-resume-builder
 3: https://github.com/novuhq/blog/tree/main/resume-builder-with-react-chatgpt-nodejs
+
+carousel
+1: https://snyk.io/advisor/npm-package/@itseasy21/react-elastic-carousel
