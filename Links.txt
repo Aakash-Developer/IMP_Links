@@ -10,3 +10,6 @@ Resume Builder
 
 carousel
 1: https://snyk.io/advisor/npm-package/@itseasy21/react-elastic-carousel
+
+Resume Builder
+1: https://chat.openai.com/share/f42851e5-11b5-4bff-a38c-d17d858f318a
