@@ -1,7 +1,8 @@
 React UI
-
 1 : https://ui.shadcn.com/
-
+2 : https://tailblocks.cc/
+3 : https://flowrift.com/c/content
+4 : https://tailwindcomponents.com/components/cards
 
 Resume Builder
 1: https://github.com/Yagnik-Gohil/Resume-Builder
