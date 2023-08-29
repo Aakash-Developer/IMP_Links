@@ -19,7 +19,7 @@ Resume Builder
 
 
 
-// range Slider Componnet 
+// range Slider Componnet ----------------------------------------------------------------------------------------------------
 
 import React from 'react';
 
@@ -41,3 +41,35 @@ function RangeSlider({ name, min, max, value, onChange }) {
 }
 
 export default RangeSlider;
+
+//------------------------------------------------------------------------------------------------------------------------------ use
+
+import React, { useState } from 'react';
+import RangeSlider from './RangeSlider'; // Adjust the path based on your file structure
+
+function App() {
+  const [skillData, setSkillData] = useState({
+    level: 3, // Set an initial value
+  });
+
+  const handleLevelChange = (event) => {
+    const newValue = parseInt(event.target.value);
+    setSkillData({ ...skillData, level: newValue });
+  };
+
+  return (
+    <div className="App">
+      {/* Use the RangeSlider component */}
+      <RangeSlider
+        name="level"
+        min={0}
+        max={5}
+        value={skillData.level}
+        onChange={handleLevelChange}
+      />
+    </div>
+  );
+}
+
+export default App;
+
