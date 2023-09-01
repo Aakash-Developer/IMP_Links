@@ -89,3 +89,4 @@ fetch('https://your-api-endpoint.com/upload', {
     console.error('Error:', error);
 });
 /////////////////////////////////////////////////////////////////////////////////////////////////
+https://chat.openai.com/share/614a6bc3-ac66-4cce-a380-d6882e68a7cb
