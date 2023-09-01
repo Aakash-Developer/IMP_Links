@@ -18,58 +18,30 @@ Resume Builder
 
 
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+document.addEventListener("DOMContentLoaded", function () {
+    const userDataItem = document.getElementById("userDataItem");
+    const copyButton = document.getElementById("copyButton");
 
-// range Slider Componnet ----------------------------------------------------------------------------------------------------
+    copyButton.addEventListener("click", function () {
+        const userData = userDataItem.getAttribute("data-userData");
 
-import React from 'react';
+        // Create a temporary input element
+        const tempInput = document.createElement("input");
+        tempInput.setAttribute("value", userData);
+        document.body.appendChild(tempInput);
 
-function RangeSlider({ name, min, max, value, onChange }) {
-  return (
-    <div className="w-full md:w-1/3">
-      <input
-        type="range"
-        name={name}
-        min={min}
-        max={max}
-        value={value}
-        onChange={onChange}
-        className="w-full"
-      />
-      <div className="text-center">{value}</div>
-    </div>
-  );
-}
+        // Select the text in the input element
+        tempInput.select();
+        tempInput.setSelectionRange(0, 99999); // For mobile devices
 
-export default RangeSlider;
+        // Copy the text to the clipboard
+        document.execCommand("copy");
 
-//------------------------------------------------------------------------------------------------------------------------------ use
+        // Remove the temporary input element
+        document.body.removeChild(tempInput);
 
-import React, { useState } from 'react';
-import RangeSlider from './RangeSlider'; // Adjust the path based on your file structure
-
-function App() {
-  const [skillData, setSkillData] = useState({
-    level: 3, // Set an initial value
-  });
-
-  const handleLevelChange = (event) => {
-    const newValue = parseInt(event.target.value);
-    setSkillData({ ...skillData, level: newValue });
-  };
-
-  return (
-    <div className="App">
-      {/* Use the RangeSlider component */}
-      <RangeSlider
-        name="level"
-        min={0}
-        max={5}
-        value={skillData.level}
-        onChange={handleLevelChange}
-      />
-    </div>
-  );
-}
-
-export default App;
-
+        // Provide user feedback (optional)
+        alert("UserData copied to clipboard: " + userData);
+    });
+});
