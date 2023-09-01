@@ -45,3 +45,47 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("UserData copied to clipboard: " + userData);
     });
 });
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+navigator.clipboard.read().then(clipboardItems => {
+    clipboardItems.forEach(item => {
+        if (item.types.includes('image/png') || item.types.includes('image/jpeg')) {
+            item.getType('image/png').then(blob => {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const imageDataUrl = event.target.result;
+                    // Now you have the image as a data URL (imageDataUrl)
+                    // Proceed to send it to the server
+                };
+                reader.readAsDataURL(blob);
+            });
+        }
+    });
+});
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+const imageDataUrl = "data:image/png;base64,iVBORw0KG..."; // Replace with the actual data URL
+
+fetch('https://your-api-endpoint.com/upload', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ imageDataUrl }), // Send the data URL as JSON
+})
+.then(response => {
+    if (response.ok) {
+        // Image successfully uploaded
+        return response.json();
+    } else {
+        // Handle the error
+        throw new Error('Failed to upload image');
+    }
+})
+.then(data => {
+    // Handle the server's response (if needed)
+    console.log('Server response:', data);
+})
+.catch(error => {
+    // Handle any errors
+    console.error('Error:', error);
+});
+/////////////////////////////////////////////////////////////////////////////////////////////////
